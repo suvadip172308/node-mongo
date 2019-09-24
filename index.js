@@ -36,7 +36,8 @@ async function getCourse(){
   const courses = await Course
     .find({author: /.*dip.*/}) // contain dip as substring
     .limit(20)
-    .sort({name: 1});
+    .sort({name: 1})
+    .count();
   
     console.log('Courses: ', courses);
 }
