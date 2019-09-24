@@ -33,11 +33,10 @@ async function createCourse() {
 
 // 4. Get all courses
 async function getCourse(){
-  const courses = await Course.find()
-    .or([{author: 'suvadip'}, {isPublished: true}])
+  const courses = await Course
+    .find({author: /.*dip.*/}) // contain dip as substring
     .limit(20)
-    .sort({name: 1})
-    .select({name: 1, tags: 1});
+    .sort({name: 1});
   
     console.log('Courses: ', courses);
 }
